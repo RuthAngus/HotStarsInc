@@ -25,7 +25,7 @@ def load_data(kid):
         flux_err = tbdata["PDCSAP_FLUX_ERR"]
         q = tbdata["SAP_QUALITY"]
         m = np.isfinite(time) * np.isfinite(flux) * \
-                np.isfinite(flux_err) * (q > 0)
+                np.isfinite(flux_err) * (q == 0)
         x.extend(time[m])
         yerr.extend(flux_err[m]/np.median(flux[m]))
         y.extend(flux[m]/np.median(flux[m]) - 1)
@@ -44,5 +44,5 @@ if __name__ == "__main__":
         plt.errorbar(x, y, yerr, **reb)
         plt.savefig("%s_lc" % str(int(k)))
 
-        corr_run(x, y, yerr, int(k), "allq",
-                 "/Users/angusr/Python/HotStarsInc/ACFresults")
+        savedir = "/Users/angusr/Python/HotStarsInc/ACFresults"
+        corr_run(x, y, yerr, int(k), savedir)
