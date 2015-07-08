@@ -205,7 +205,7 @@ def corr_run(time, flux, flux_err, ID, savedir):
 
         print 'PERIOD = ', period[x], '+/-', error,
         print 'saving as', '%s/%s_result.txt'%(savedir, int(id_list[0]))
-        np.savetxt('%s/%s_%s_result.txt'%(savedir, int(id_list[0])),
+        np.savetxt('%s/%s_result.txt'%(savedir, int(id_list[0])),
                    np.transpose((period[x], error)))
     else:
         blank = np.array([0,0])
